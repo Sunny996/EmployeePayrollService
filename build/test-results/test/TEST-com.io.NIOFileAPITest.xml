@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.io.NIOFileAPITest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-26T17:29:55" hostname="DESKTOP-E72B5JU" time="0.061">
+  <properties/>
+  <testcase name="givenPathWhenCheckedThenConfirm()" classname="com.io.NIOFileAPITest" time="0.061"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
