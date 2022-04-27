@@ -41,10 +41,10 @@ public class EmployeePayrollFileIOService {
         return entries;
     }
 
-    public List<EmployeePayrollData> readData(){
-        List<EmployeePayrollData> employeePayrollList=new ArrayList<>();
-        try{
-            Files.lines(new File("payroll.txt").toPath()).map(line->line.trim()).forEach(System.out::println);
+    public List<EmployeePayrollData> readData() {
+        List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
+        try {
+            Files.lines(new File("payroll.txt").toPath()).map(String::trim).forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
         }
