@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.io.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-27T02:23:28" hostname="DESKTOP-E72B5JU" time="0.06">
+  <properties/>
+  <testcase name="given3EmployeesWhenWrittenToFileShouldMatchEmployeeEntries()" classname="com.io.EmployeePayrollServiceTest" time="0.06"/>
+  <system-out><![CDATA[id=1, name=Jeff Bezos, salary=10000.0
+id=2, name=Bill Gates, salary=20000.0
+id=3, name=Mark Zuckerberg, salary=30000.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

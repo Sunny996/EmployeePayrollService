@@ -1,8 +1,16 @@
 package com.io;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static com.io.EmployeePayrollFileIOService.PAYROLL_FILE_NAME;
+import static com.io.EmployeePayrollService.IOService.CONSOLE_IO;
+import static com.io.EmployeePayrollService.IOService.FILE_IO;
+
 
 public class EmployeePayrollService {
     public static void main(String[] args) {
@@ -10,7 +18,17 @@ public class EmployeePayrollService {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService(employeePayrollList);
         Scanner consoleInputReader = new Scanner(System.in);
         employeePayrollService.readEmployeePayrollData(consoleInputReader);
-        employeePayrollService.writeEmployeePayrollData();
+        employeePayrollService.writeEmployeePayrollData(CONSOLE_IO);
+    }
+
+    public long countEntries(IOService fileIo) {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File(PAYROLL_FILE_NAME).toPath()).count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return entries;
     }
 
     public enum IOService {
@@ -36,7 +54,19 @@ public class EmployeePayrollService {
         employeePayrollList.add(new EmployeePayrollData(id, name, salary));
     }
 
-    public void writeEmployeePayrollData() {
-        System.out.println("\nWriting Employee Payroll Roaster to console\n" + employeePayrollList);
+    public void writeEmployeePayrollData(IOService ioService) {
+        if (ioService.equals(IOService.CONSOLE_IO))
+            System.out.println("\nWriting Employee Payroll Roaster to console\n" + employeePayrollList);
+        else if (ioService.equals(FILE_IO))
+            new EmployeePayrollFileIOService().writeData(employeePayrollList);
     }
+
+    public void printData(IOService ioService) {
+        try {
+            Files.lines(new File(PAYROLL_FILE_NAME).toPath()).forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
