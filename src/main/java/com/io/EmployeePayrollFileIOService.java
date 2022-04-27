@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeePayrollFileIOService {
@@ -38,5 +39,15 @@ public class EmployeePayrollFileIOService {
             e.printStackTrace();
         }
         return entries;
+    }
+
+    public List<EmployeePayrollData> readData(){
+        List<EmployeePayrollData> employeePayrollList=new ArrayList<>();
+        try{
+            Files.lines(new File("payroll.txt").toPath()).map(line->line.trim()).forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return employeePayrollList;
     }
 }
